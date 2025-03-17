@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--    Cabecera por Thymeleaf-->
-    <div th:replace="~{/fragmentos/cabecera::seccion-cabecera(titulo='Agregar Contacto')}"></div>
+    <div th:replace="~{/fragmentos/cabecera::seccion-cabecera(titulo='Editar Contacto')}"></div>
 </head>
 <body>
 <!--Menu navegacion por Thymeleaf-->
@@ -10,24 +10,25 @@
 
 <div class="container">
     <div class="container text-center" style="margin:30px">
-        <h3>Agregar Contacto</h3>
+        <h3>Editar Contacto</h3>
     </div>
     <div class="container">
-        <form action="/agregar" modelAttribute="contactoForma" method="post">
+        <form action="/editar" th:object="${contacto}" method="post">
+            <input type="hidden" th:field="*{idContacto}"/>
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" required="true">
+                <input type="text" class="form-control" id="nombre" name="nombre" required="true" th:field="*{nombre}">
             </div>
-            <div class="mb-4">
+            <div class="mb-3">
                 <label for="celular" class="form-label">Celular</label>
-                <input type="text" class="form-control" id="celular" name="celular" required="true">
+                <input type="text" class="form-control" id="celular" name="celular" required="true" th:field="*{celular}">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" name="email" required="true">
+                <input type="text" class="form-control" id="email" name="email" required="true" th:field="*{email}">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-warning btn-sm me-3">Agregar</button>
+                <button type="submit" class="btn btn-warning btn-sm me-3">Editar</button>
                 <a href="/" class="btn btn-danger btn-sm">Regresar</a>
             </div>
 
