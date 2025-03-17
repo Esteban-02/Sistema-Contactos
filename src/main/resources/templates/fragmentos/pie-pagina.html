@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--Con thymeleaf (th) con el //th:revome="tag"// lo que hace es NO tomar las etiquetas, es decir
+solo esta tomando el Script, ninguna etiqueta o tag anterior sera tomado-->
+<div th:fragment="pie-pagina-seccion" th:revome="tag">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</div>
+
+<!--Dado lo anterior se pueden borrar las demas etiquetas pero siempre mesionando en
+nameSpace -->
+
+</html>
