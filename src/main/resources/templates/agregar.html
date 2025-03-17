@@ -13,18 +13,18 @@
         <h3>Agregar Contacto</h3>
     </div>
     <div class="container">
-        <form>
+        <form action="/agregar" modelAttribute="contactoForma" method="post">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre">
+                <input type="text" class="form-control" id="nombre" name="nombre" required="true">
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <label for="celular" class="form-label">Celular</label>
-                <input type="text" class="form-control" id="celular" nombre="celular">
+                <input type="text" class="form-control" id="celular" name="celular" required="true">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" class="form-control" id="email" nombre="email">
+                <input type="text" class="form-control" id="email" name="email" required="true">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-warning btn-sm me-3">Agregar</button>

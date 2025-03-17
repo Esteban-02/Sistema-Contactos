@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,7 +28,6 @@ public class ContactoControlador {
     public String iniciar(ModelMap modelo){
         List<Contacto>contactos = contactoServicio.listarContactos();                 //Se trae la lista de contactos del servicio
         contactos.forEach((contacto) -> logger.info(contacto.toString())); //Se lee la lista de contactos con un forEach para mostrar en la consola de la lista
-        logger.info("Contactos Funcionales");
         modelo.put("contactos", contactos);     //Compartir la informacion del modelo a traves de la vista con un Hashtable con la llave "contactos" que desde la presentacion y proporcionar la lista recuperada de la base de datos
         return "index"; //index.html        Retorna la vista donde sera retornada
     }
@@ -38,6 +39,13 @@ public class ContactoControlador {
     @GetMapping("/agregar")
     public String mostrarAgregar(){
         return "agregar";
+    }
+
+    @PostMapping("/agregar")
+    public String agregar(@ModelAttribute("contactoForma")Contacto contacto){
+        logger.info("Contacto agregar: "+ contacto);
+        contactoServicio.guardarContacto(contacto);
+        return "redirect:/";    // Redirije al controlador PATH de inicio ya que este se cargara con el nuevo contacto, es decir actualiza la lista
     }
 
 }
